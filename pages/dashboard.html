@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../styles/dashboard.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <title>Dashboard | SamyBuster</title>
+</head>
+  <!-- NAVBAR -->
+  <nav id='menu'> </nav>
+<body>
+
+    <!-- MODAL ALERT-->
+    <div id="modalData" class="modal">
+        <!-- Contenido del modal -->
+        <div class="modal-content">
+            <!-- Botón para cerrar el modal -->
+            <span class="close">&times;</span>
+            <h2 id="dataInfoIncompleteTitle"></h2>
+            <p id="dataInfoIncomplete"></p>
+            <div id="dataActions"></div>
+        </div>
+    </div>
+
+
+    <!-- body-->
+    <div id="body">
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/dashboard.js"></script>
+    <script src="../js/webSocket.js"></script>
+</body>
+
+</html>

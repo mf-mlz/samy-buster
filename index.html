@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./styles/index.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <title>SamyBuster</title>
+</head>
+
+<body>
+
+    <!-- MODAL ALERT-->
+    <div id="modalData" class="modal">
+        <!-- Contenido del modal -->
+        <div class="modal-content">
+            <!-- Botón para cerrar el modal -->
+            <span class="close">&times;</span>
+            <h2 id="dataInfoIncompleteTitle"></h2>
+            <p id="dataInfoIncomplete"></p>
+        </div>
+    </div>
+
+    <div class="father">
+        <h1> SAMYBUSTER</h1>
+        <hr>
+        <div class="grid-container">
+            <div class="grid-item text">Correo:</div>
+            <div class="grid-item"><input type="email" class="input" name="email" id="email"></div>
+            <div class="grid-item text">Contraseña:</div>
+            <div class="grid-item"><input type="password" class="input" name="password" id="password"></div>
+            <div class="grid-item register"><button id="login" type="button" class="buttonClass">Iniciar Sesión <i
+                        class="fa fa-sign-in" aria-hidden="true"></i></button></div>
+
+            <div class="grid-item register"><a href="/pages/register.html">Registrar Usuario</a></div>
+
+        </div>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>

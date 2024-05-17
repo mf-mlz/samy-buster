@@ -1,0 +1,38 @@
+<!-- MODAL DELETE-->
+<div id="modalData" class="modal">
+    <!-- Contenido del modal -->
+    <div class="modal-content">
+        <!-- Botón para cerrar el modal -->
+        <span class="close">&times;</span>
+        <h2 id="dataInfoIncompleteTitle"></h2>
+        <p id="dataInfoIncomplete"></p>
+    </div>
+</div>
+<div id="search">
+    <div class="grid-container-search">
+        <div class="form-field" style="margin: 0 auto;">
+            <label for="title" style="color: white;">Buscar Pelicula:</label>
+            <select class="form-control" id="key" name="key" style="margin-top:10px; margin-bottom: 10px;">
+                <option value='' selected>Selecciona una Opción</option>
+                <option value='year'>Año</option>
+                <option value='autor'>Autor</option>
+                <option value='title'>Titulo</option>
+                <option value='genre'>Género</option>
+            </select>
+            <div class="button-container">
+           
+            </div>
+            
+        </div>
+
+        <div id="searchDiv" style="display: flex;justify-content: center;"></div>
+
+        
+    </div>
+</div>
+<div class="grid-inventary">
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.full.min.js"></script>
+<script src="../js/inventary.js"></script>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../styles/register.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <title>Register User - SamyBuster</title>
+</head>
+
+<body>
+
+    <!-- MODAL ALERT-->
+    <div id="modalData" class="modal">
+        <!-- Contenido del modal -->
+        <div class="modal-content">
+            <!-- Botón para cerrar el modal -->
+            <span class="close">&times;</span>
+            <h2 id="dataInfoIncompleteTitle"></h2>
+            <p id="dataInfoIncomplete"></p>
+        </div>
+    </div>
+
+    <!-- DATA FORM -->
+    <div class="father">
+        <h1> REGISTRAR USUARIO</h1>
+        <hr>
+        <div class="grid-container">
+            <!--  NOMBRE -->
+            <div class="grid-item">
+                <label>Nombre:</label>
+                <input type="text" class="input" name="name" id="name">
+            </div>
+            <!--  APELLIDO P -->
+            <div class="grid-item">
+                <label>Apellido P:</label>
+                <input type="text" class="input" name="lastnamep" id="lastnamep">
+            </div>
+            <!--  APELLIDO M -->
+            <div class="grid-item">
+                <label>Apellido M:</label>
+                <input type="text" class="input" name="lastname" id="lastname">
+            </div>
+            <!--  EDAD -->
+            <div class="grid-item">
+                <label>Edad:</label>
+                <input type="number" class="input" name="age" id="age">
+            </div>
+            <!--  TÉLEFONO -->
+            <div class="grid-item">
+                <label>Télefono:</label>
+                <input type="number" class="input" name="phone" id="phone">
+            </div>
+            <!--  EMAIL -->
+            <div class="grid-item">
+                <label>Email:</label>
+                <input type="email" class="input" name="email" id="email">
+            </div>
+            <!--  CONTRASEÑA -->
+            <div class="grid-item">
+                <label>Contraseña:</label>
+                <input type="password" class="input" name="password" id="password">
+            </div>
+            <!--  DIRECCIÓN -->
+            <div class="grid-item">
+                <label>Dirección:</label>
+                <input type="text" class="input" name="address" id="address">
+            </div>
+            <div class="grid-item register"> <button id="registerUser" type="button" class="buttonClass">Registrarse</button></div>
+            <div class="grid-item register" style="margin-top: 10px !important;"><a href="../index.html">Regresar</a></div>
+
+        </div>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../js/register.js"></script>
+    <script src="../js/webSocket.js"></script>
+</body>
+
+</html>
