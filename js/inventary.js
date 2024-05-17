@@ -656,30 +656,10 @@ function sendMessage(message) {
 }
 
 function downloadTicket(idBuy) {
-    const userLogged = JSON.parse(localStorage.getItem('userData'));
-    const data = {
-        id_buy: idBuy
-    }
-    const formData = $.param(data);
-
-    $.ajax({
-        url: 'http://localhost/samy-buster-api/api/createTicketBuy',
-        type: 'POST',
-        contentType: 'application/x-www-form-urlencoded',
-        data: formData,
-        headers: {
-            'Authorization': 'Bearer ' + userLogged.token
-        },
-        success: function (file) {
-            console.log(file);
-
-        },
-        error: function (xhr, status, error) {
-            const err = JSON.parse(xhr.responseText);
-            console.error("Error al generar el PDF:", err.message);
-        }
-    });
+    const url = 'http://localhost/samy-buster-api/api/createTicketBuy?id_buy='+idBuy;
+    window.open(url, '_blank'); 
 }
+
 
 
 
