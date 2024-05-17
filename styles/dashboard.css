@@ -174,7 +174,7 @@ body {
 }
 
 /* Graphics */
-.report{
+.report {
     background-color: rgb(247, 247, 247) !important;
     display: block !important;
     box-sizing: border-box !important;
@@ -199,8 +199,8 @@ body {
     border-radius: 20px;
 }
 
-.grid-inventary > .card:only-child {
-    width: 40%; 
+.grid-inventary>.card:only-child {
+    width: 40%;
 }
 
 .card:hover {
@@ -284,7 +284,11 @@ body {
     margin-top: -10px;
     margin-bottom: 25px;
     max-width: 100%;
-    font-size: 8px;  
+    font-size: 8px;
+    width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .div-actions {
@@ -327,6 +331,10 @@ body {
     color: white;
 }
 
+.delete:hover {
+    background-color: #741212 !important;
+}
+
 .grid-container-edit {
     display: grid;
     gap: 20px;
@@ -361,10 +369,10 @@ body {
 
 .button-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
-    gap: 10px; 
-    max-width: 400px; 
-    margin: 0 auto; 
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+    max-width: 400px;
+    margin: 0 auto;
 }
 
 .button-container button {

@@ -100,9 +100,7 @@ function createInventary(movies, buys) {
         let actionButtons = '';
 
         if (role === 'User') {
-            actionButtons = `<div style="display:flex;justify-content:end;">
-            <button class="myButtonMovie" onclick="viewInfoMovie(${element.id})" style="background-color:#ef0000 !important; border:1px solid #ef0000 !important;font-size: 10px;padding: 1px !important;height: 28px;width: 100px;"> <i class="fa fa-eye"></i> Ver más</button>
-        </div><div style="display:flex; justify-content:center;">${buyBtn + viewBtn}</div>`;
+            actionButtons = `<div style="display:flex; justify-content:center;">${buyBtn + viewBtn}</div>`;
         } else {
             actionButtons = '<div class="div-actions"> <a onclick="openModaleditMovie(\'' + element.id + '\', \'' + element.title + '\', \'' + element.description + '\', \'' + element.duration + '\', \'' + element.year + '\', \'' + element.autor + '\', \'' + element.genre + '\', \'' + element.visits + '\', \'' + element.calification + '\', \'' + element.link + '\', \'' + element.photo + '\', \'' + element.inventary + '\', \'' + element.price + '\')" class="myButtonMovie">Editar</a> <a onclick="openModaldeleteMovie(\'' + element.title + '\', \'' + element.id + '\')" class="myButtonMovie buy">Eliminar</a></div>';
         }
@@ -113,28 +111,33 @@ function createInventary(movies, buys) {
         const price = element.price ? parseFloat(element.price) : 0;
         const priceFormated = price.toLocaleString('es-MX', { style: 'currency', currency: 'MXN' });
 
-        html += `
-        <div class="card">
-        <img src="${element.photo}" alt="Portada Movie">
-        <div class="container">
-          <h5><b>${element.title} - ${element.year} | ${element.genre}</b></h5>
-          <hr style="margin-top: -17px;margin-bottom: 17px;">
-          <p style="margin-top: -10px;">${element.duration}</p>
-          <p class="description-movie">${element.description}</p>
-            <div class="movie-info">
-                <div class="div-genre">
-                    <p class="price-movie" style="border: 1px solid black; padding: 11px; border-radius: 30px; margin-top: 20px;">${priceFormated}</p>    
+        if(isBuyMovie){
+            html += `
+            <div class="card">
+            <img src="${element.photo}" alt="Portada Movie">
+            <div class="container">
+              <h5><b>${element.title} - ${element.year} | ${element.genre}</b></h5>
+              <hr style="margin-top: -17px;margin-bottom: 17px;">
+              <p style="margin-top: -10px;">${element.duration}</p>
+              <p class="description-movie">${element.description}</p>
+                <div class="movie-info">
+                    <div class="div-genre">
+                        <p class="price-movie" style="border: 1px solid black; padding: 11px; border-radius: 30px; margin-top: 20px;">${priceFormated}</p>    
+                    </div>
+                    <div class="ratioPercent" style="--ratio: ${Number(element.calification).toFixed(2) / 10}; --colorPercent: ${element.calification >= 7 ? '#18c018' : element.calification >= 5 ? '#f7a019' : 'red'}">
+                        <span class="percentSpan">${Math.floor(Number(element.calification).toFixed(2) * 10)}%</span>
+                    </div>
                 </div>
-                <div class="ratioPercent" style="--ratio: ${Number(element.calification).toFixed(2) / 10}; --colorPercent: ${element.calification >= 7 ? '#18c018' : element.calification >= 5 ? '#f7a019' : 'red'}">
-                    <span class="percentSpan">${Math.floor(Number(element.calification).toFixed(2) * 10)}%</span>
+                <div style="display:flex;justify-content:end;">
+                    <button class="myButtonMovie" onclick="viewInfoMovie(${element.id})" style="background-color:#ef0000 !important; border:1px solid #ef0000 !important;font-size: 10px;padding: 1px !important;height: 28px;width: 100px;"> <i class="fa fa-eye"></i> Ver más</button>
                 </div>
+               ${actionButtons}
+               ${inventary}
             </div>
-            
-           ${actionButtons}
-           ${inventary}
         </div>
-    </div>
-    `;
+        `;
+        }
+        
     });
     $(".grid-inventary").html(html);
 }
@@ -483,8 +486,9 @@ function editMovie() {
             'Authorization': 'Bearer ' + userLogged.token
         },
         success: function (response) {
+            const result = JSON.parse(response);
             $("#dataInfoIncompleteTitle").text(`Editar Pelicula - ` + $("#titleEdit").val());
-            $("#dataInfoIncomplete").text(`Pelicula Modificada con Éxito`);
+            $("#dataInfoIncomplete").text(`${result.message}`);
             $("#dataActions").empty();
             $("#modalData").show();
             getBuys();

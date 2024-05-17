@@ -5,15 +5,17 @@ $(document).ready(function () {
 
 function validateSession() {
     const userLogged = JSON.parse(localStorage.getItem('userData'));
-    const data = {
-        id: userLogged.id
-    };
     if (!userLogged) {
-        window.location.href = '../index.html?signOut';
+        logOut();
     } else {
-        initReports()
+        const validateDate = validateDateSession(userLogged.created_at_session);
+        if (validateDate) {
+            logOut();
+        }
+        initReports();
     }
 }
+
 
 /* Init Reports */
 function initReports() {
@@ -143,10 +145,14 @@ function createMovieMostCalification(buys) {
 
 /* Function Api */
 function getClients() {
+    const userLogged = JSON.parse(localStorage.getItem('userData'));
     socket.send('Clients Obtiend');
     $.ajax({
-        url: 'http://localhost/samy-buster-api/api/getClientsMonth',
+        url: 'http://localhost/samy-buster-api/api/getUsersRegisterMonth',
         type: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + userLogged.token
+        },
         success: function (response) {
             const clients = JSON.parse(response);
             createEstadisticsClients(clients);
@@ -161,9 +167,13 @@ function getClients() {
 }
 
 function getMostBuys() {
+    const userLogged = JSON.parse(localStorage.getItem('userData'));
     $.ajax({
         url: 'http://localhost/samy-buster-api/api/getMoviesMostBuy',
         type: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + userLogged.token
+        },
         success: function (response) {
             const buys = JSON.parse(response);
             createMovieMostBuy(buys);
@@ -178,9 +188,13 @@ function getMostBuys() {
 }
 
 function getMostVisit() {
+    const userLogged = JSON.parse(localStorage.getItem('userData'));
     $.ajax({
         url: 'http://localhost/samy-buster-api/api/getMoviesMostVisit',
         type: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + userLogged.token
+        },
         success: function (response) {
             const buys = JSON.parse(response);
             createMovieMostVisits(buys);
@@ -195,9 +209,13 @@ function getMostVisit() {
 }
 
 function getMostCalification() {
+    const userLogged = JSON.parse(localStorage.getItem('userData'));
     $.ajax({
-        url: 'http://localhost/samy-buster-api/api/getMostCalification',
+        url: 'http://localhost/samy-buster-api/api/getMoviesMostCalification',
         type: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + userLogged.token
+        },
         success: function (response) {
             const buys = JSON.parse(response);
             createMovieMostCalification(buys);
@@ -216,9 +234,15 @@ socket.onmessage = function (e) {
     let message = e.data;
     if (message == 'Payment Obtiend') {
         destroyCharts();
-    }else if(message == 'View Movie'){
+    } else if (message == 'View Movie') {
         destroyCharts();
-    }else if('Register New User'){
+    } else if ('Register New User') {
         destroyCharts();
     }
 };
+
+
+function logOut() {
+    localStorage.removeItem('userData');
+    window.location.href = '../index.html?signOut';
+}
